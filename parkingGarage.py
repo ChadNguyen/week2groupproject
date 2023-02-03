@@ -4,30 +4,31 @@
 # - parkingSpaces -> list
 # - currentTicket -> dictionary
 
-class ticket:
-
-
-    def __init__(self, vehicle, quantity, pay, dailytotal):
+class Garagelot:
+    def __init__(self, vehicle, pay=10, dailytotal, availablespaces=100, tickets=0,):
         self.vehicle = vehicle
-        self.quantity = quantity
         self.pay = pay
         self.dailytotal = dailytotal
-
-    def vehicle_entering(self, small=1, oversize=1):
-        self.quantity += small
-        self.quantity += oversize
+        self.availablespaces = availablespaces
+        self.tickets = tickets
 
 
+    def vehicle_entering(self, parked=1, sold_tickets=1):
+        self.availablespaces += parked
+        self.tickets += sold_tickets 
 
-class ParkingSpaces:
-    spaces = []
+    
+    def vehicle_exiting(self, exiting=1):
+        self.availablespaces -= exiting
+        
 
-    def vehecle_parked(self, parkingspot=100, ):
-        self.parkingspot -= parkingspot
-     
+    def driver():
+        parking = True
+        while parking:
 
-    def vehecle_exiting(self, parkingspot=100, ):
-        self.parkingspot += parkingspot
+
+
+
         
 
 
