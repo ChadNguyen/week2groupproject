@@ -1,3 +1,8 @@
+# You will need a few attributes as well:
+# - tickets -> list
+# - parkingSpaces -> list
+# - currentTicket -> dictionary
+# Start Your Code here
 
 
 
@@ -24,7 +29,7 @@
 
 
 
-#  leaveGarage
+#  leaveGarage ~~~~~~~~~~~zion
 #  If the ticket has been paid, display a message of "Thank You, have a nice day"
 #  If the ticket has not been paid, display an input prompt for payment
 #  Once paid, display message "Thank you, have a nice day!"
