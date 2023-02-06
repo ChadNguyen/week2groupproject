@@ -1,25 +1,25 @@
 class ParkingGarage:
-    def init(self, space_qty=100):
+    def __init__(self, space_qty=100):
         self.space_qty = space_qty
+        self.open_spaces = space_qty
         
-    def enter(self, space_qty, customer_qty):
-        self.space_qty = space_qty
-        self.space_qty -= customer_qty
+    def enter(self, customer_qty):
+        self.open_spaces -= customer_qty
         if self.open_spaces >= 0:
             print(f'Welcome to the parking garage! Enjoy your time here!')
         else:
             print('Sorry, there are no more available parking spaces.')
-
+    
     def leave(self, customer_qty):
         self.open_spaces += customer_qty
         print('Goodbye, thank you for coming! Have a wonderful day!')
-  
+
 class ParkingTicket:
-    def init(self, ticket_num=100):
+    def __init__(self, ticket_num=100):
         self.ticket_num = ticket_num
         self.tickets = [{"number": i, "paid": False} for i in range(ticket_num)]
         self.current_ticket = None
-
+    
     def take_ticket(self, customer_qty):
         if len(self.tickets) >= customer_qty:
             self.current_tickets = [self.tickets.pop() for i in range(customer_qty)]
@@ -31,7 +31,7 @@ class ParkingTicket:
         if not self.current_tickets:
             print("No ticket has been taken.")
             return
-
+    
         payment = input("Please enter payment amount: ")
         payment = int(payment)
         if payment >= 10 * customer_qty:
@@ -41,7 +41,7 @@ class ParkingTicket:
 
         else:
             print("Payment must be at least $10 per vehicle.")
-
+    
     def leave_garage(self, customer_qty):
         if len(self.current_tickets) == customer_qty:
             all_paid = True
@@ -57,54 +57,11 @@ class ParkingTicket:
 
 parking_garage = ParkingGarage()
 parking_ticket = ParkingTicket()
+
 customer_qty = int(input("Welcome to the parking garage! How many cars do you have? "))
-parking_garage.enter()
+parking_garage.enter(customer_qty)
 parking_ticket.take_ticket(customer_qty)
 parking_ticket.pay_for_parking(customer_qty)
 parking_ticket.leave_garage(customer_qty)
 parking_garage.leave(customer_qty)
-                
 
-
-class ParkingGarage:
-    ticket = 0
-
-    def __init__(self, space_qty=100):
-        self.space_qty = space_qty
-        self.open_spaces = space_qty
-        
-    def enter(self, customer_qty):
-        self.open_spaces -= customer_qty
-        if self.open_spaces >= 0:
-            print('Welcome to the parking garage! Enjoy your time here!')
-        else:
-            print('Sorry, there are no more available parking spaces.')
-    
-    def leave(self, customer_qty):
-        self.open_spaces += customer_qty
-        print('Goodbye, thank you for coming! Have a wonderful day!')
-    def leave(self, customer_qty):
-        self.open_spaces += customer_qty
-        print('Goodbye, thank you for coming! Have a wonderful day!')
-
-    def leaveGarage(self):
-        while not paid:
-            payment = input("Have you paid your ticket? (yes/no)")
-            if payment.lower() == "yes":
-                paid = True
-                print("Thank you, have a nice day!")
-            elif payment.lower() == "no":
-                payment = input("Please enter your payment:")
-                print("Thank you, have a nice day!")
-                paid = True
-            else:
-                print("Invalid input. Please enter 'yes' or 'no'.")
-        self.open_spaces += 1
-    
-    def takeTicket(self, customer_qty):
-        if self.open_spaces - customer_qty >= 0:
-            print("Here is your ticket. Enjoy your stay!")
-            self.enter(customer_qty)
-        else:
-            print("Sorry, there are no more available parking spaces.")
-        self.ticket += 1
